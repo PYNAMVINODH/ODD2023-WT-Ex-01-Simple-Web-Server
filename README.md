@@ -21,9 +21,40 @@ Serving the HTML pages.
 Testing the webserver.
 
 ## PROGRAM:
+```
+ from http.server import HTTPServer, BaseHTTPRequestHandler
+
+content = """
+<html>
+<head>
+<title>Top Five Web Application Development Frameworks</title>
+</head>
+<body>
+<h1>1.Django</h1>
+<h1>2.MEAN Stack</h1>
+<h1>3.React<h1>
+<h1>4.Ruby on rails<h1>
+<h1>5.Angular<h1>
+</body>
+</html>
+
+"""
+
+class HelloHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html; charset=utf-8')
+        self.end_headers()
+        self.wfile.write(content.encode())
+
+server_address = ('', 80)
+httpd = HTTPServer(server_address, HelloHandler)
+httpd.serve_forever()
+```
 
 
 ## OUTPUT:
+ ![WhatsApp Image 2023-11-21 at 15 52 34_561e8d19](https://github.com/PYNAMVINODH/ODD2023-WT-Ex-01-Simple-Web-Server/assets/145742678/bf371f29-9477-4f1b-8470-09af57dd0fe6)
 
 
 ## RESULT:
